@@ -8,4 +8,6 @@ jobs:
         steps:
            - uses: actions/checkout@v4
            - run: | 
-                curl -d "Se ha subido codigo nuevo al repositorio de practica2 en la rama main" https://ntfy.sh/devops-itla
+                REPO_URL="https://github.com{{ github.repository }}"
+                MESSAGE="El usuario ${{ github.actor }} ha subido nuevo codigo al repositorio $REPO_URL en la rama ${{ github.ref_name }}"
+                curl -d "$MESSAGE" https://ntfy.sh/devops-itla
